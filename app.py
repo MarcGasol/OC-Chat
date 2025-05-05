@@ -55,17 +55,16 @@ def botResponseFromOC(charName):
 
     summary = "" if json_["summary"] is None else "\nSummary of your previous conversation with the user: \n"+json_["summary"]
 
+    # 默认全走qwen
     response = ""
-    if charName == "AmandaAdultCN":
-        response = get_OCresponse_from_gpt_json(convLog, charName, personalKeyInfo, summary)
-    elif charName == "Nicole":
+    if charName == "Nicole":
         model = json_.get("model", "")
         if model =='qwen-turbo':
             response = get_OCresponse_from_qwen_turbo(convLog, charName, personalKeyInfo, summary)
         else:
             response = get_OCresponse_from_gpt_o1(convLog, charName, personalKeyInfo, summary)
     else:
-        response = get_OCresponse_from_gpt(convLog, charName, personalKeyInfo, summary)
+        response = get_OCresponse_from_qwen_turbo(convLog, charName, personalKeyInfo, summary)
 
     return jsonify({"botResponse": response})
 
