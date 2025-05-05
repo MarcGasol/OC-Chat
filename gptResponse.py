@@ -209,7 +209,7 @@ def get_OCresponse_from_qwen_turbo(convLog, charName, personalKeyInfo="", summar
     client = OpenAI(
         # If environment variables are not configured, replace the following line with: api_key="sk-xxx",
         api_key=ALI_API_KEY,
-        base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
     )
     system = name2prompt[charName] + personalKeyInfo + summary
     messages = convLog
